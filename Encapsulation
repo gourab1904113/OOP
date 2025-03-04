@@ -1,0 +1,79 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Teacher{
+    public:
+      string name;
+      string dept;
+      int* pointer;
+    private:
+      double salary;
+
+      void changeDept(string newDept){
+          dept=newDept;
+      }
+
+    public:
+
+      ~Teacher(){
+         delete pointer;
+      }
+
+      Teacher(Teacher &obj){
+          this->name=obj.name;
+          this->dept=obj.dept;
+          this->salary=obj.salary;
+
+          pointer= new int;
+          *pointer= *obj.pointer;
+          obj.salary=3;
+      }
+
+      Teacher(string nam,string dep,double sal){
+        dept=dep;
+        name=nam;
+        salary=sal;
+        pointer= new int;///allocate new address
+        *pointer= 10;
+      }
+      ///setter
+      void setSalary(double value){
+           salary=value;
+      }
+
+      ///getter
+      double getSalary(){
+          return salary;
+      }
+
+      void getInfo(){
+        cout<<name<<" "<<dept<<" "<<salary<<" "<<*(pointer)<<endl;
+      }
+
+};
+
+class Account{
+
+public:
+    string accountId;
+    string userName;
+
+private:
+    double balance;
+    string passWord;
+
+};
+int main(){
+
+       Teacher T1("gourab","CSE",10000),T2(T1);
+
+       T1.getInfo();
+
+
+
+       *(T2.pointer)=100;
+
+        T1.getInfo();
+        T2.getInfo();
+
+}
