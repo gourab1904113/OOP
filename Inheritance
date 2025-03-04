@@ -1,0 +1,126 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class person{
+public:
+
+     ~person(){
+      cout<<"Destructor parent"<<endl;
+    }
+
+     person(){
+        cout<<"Parent constructor"<<endl;
+    }
+     string name;
+     int age;
+
+     person(string name,int age){
+        this->name=name;
+        this->age=age;
+     }
+
+};
+
+class student : public person{
+   ///name, age, id
+
+   public:
+       string id;
+
+   ~student(){
+      cout<<"Destructor child"<<endl;
+    }
+
+    student(){
+         cout<<"Child constructor"<<endl;
+    }
+
+      student(string id,string name,int age):person(name,age){
+          this->id=id;
+      }
+
+    void getInfo(){
+       cout<<"Name "<<name<<endl;
+       cout<<"Age "<<age<<endl;
+       cout<<"Id "<<id<<endl;
+       cout<<endl;
+    }
+
+
+};
+
+class Teacher: public person{
+
+   public:
+        double salary;
+
+        Teacher(double salary,string name,int age):person(name,age){
+           this->salary=salary;
+        }
+
+        void getInfo(){
+          cout<<"salary: "<<salary<<" name: "<<name<<" age: "<<age<<endl;
+          cout<<endl;
+        }
+
+};
+
+class Teach: public student, public Teacher{
+   public:
+       int numberOfClass;
+
+       Teach(int numberOfClass,double salary, string id,string name,int age):student(id,name,age),Teacher(salary,name,age){
+            this->numberOfClass=numberOfClass;
+       }
+       void output(){
+             cout<<"number of class "<<numberOfClass<<endl;
+             student::getInfo();
+             Teacher::getInfo();
+       }
+
+};
+class gradStudent: public student {
+
+ public:
+      string gradYear;
+
+      gradStudent(string gradYear,string id,string name,int age):student(id,name,age){
+            this->gradYear=gradYear;
+      }
+
+      void getValue(){
+          cout<<"Graduation Year "<<gradYear<<endl;
+          getInfo();
+      }
+
+
+};
+int main(){
+
+   student s1;
+   s1.id="113";
+   s1.name="gourab";
+   s1.age=24;
+   s1.getInfo();
+
+   student s2("113","me",24);
+
+   s2.getInfo();
+
+   gradStudent gs1("2025","113","gourab",24);
+
+   gs1.getValue();
+
+
+   Teacher T1(45,"gourab",24);
+
+   T1.getInfo();
+
+   Teach Te1(10,2000,"113","gourab",24);
+   Te1.output();
+
+
+
+
+}
