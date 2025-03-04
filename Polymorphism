@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class person{
+public:
+
+
+     person(){
+     }
+
+     virtual void output(){
+        cout<<"Person output"<<endl;
+      }
+};
+
+class student: public person{
+
+ public:
+
+          student(){
+          }
+
+          void show(char x){
+              cout<<"Char "<<x<<endl;
+          }
+          void show(int x){
+             cout<<"Int "<<x<<endl;
+          }
+
+          void output(){
+             cout<<"student output";
+          }
+};
+
+
+int main(){
+
+
+   student s1;
+
+   person p1;
+
+   s1.show('g');
+   s1.show(24);
+
+   p1.output();
+   s1.output();
+
+
+}
