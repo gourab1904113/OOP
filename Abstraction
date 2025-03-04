@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Shape{///abstruct class
+   virtual void draw()=0; ///pure virtual
+};
+
+class Circle: public Shape{
+
+public:
+      void draw(){
+         cout<<"Draw circle"<<endl;
+      }
+
+};
+
+class Triangle: public Shape{
+   public:
+        void draw(){
+           cout<<"Draw Triangle"<<endl;
+        }
+};
+
+void fun(){
+   static int x=0;
+   cout<<"x: "<<x<<endl;
+   x++;
+}
+
+int main(){
+    Triangle t1;
+    Circle c1,c2;
+
+    t1.draw();
+    c1.draw();
+
+    fun();
+    fun();
+    fun();
+
+
+
+}
